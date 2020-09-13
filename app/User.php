@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password',
     ];
 
     /**
@@ -36,4 +36,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //funciones para definir y validar los roles de un usuario
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    public function asignarRol($role)
+    {
+        $this->roles()->sync($role, false);
+    }
+
+    public function tieneRol()
+    {
+        return $this->roles->flatten()->pluck('name')->unique();
+    }
+
 }
