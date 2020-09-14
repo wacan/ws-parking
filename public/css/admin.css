@@ -49,7 +49,7 @@
 .top-nav>.open>a,
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
-    color: #fff;
+    color: rgb(157, 173, 219);
     background-color: #1a242f;
 }
 
@@ -57,12 +57,12 @@
     float: left;
     position: absolute;
     margin-top: 0;
-    /*border: 1px solid rgba(0,0,0,.15);*/
+    border: 2px solid rgba(0,0,0,.15);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     background-color: #fff;
     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(43, 52, 187, 0.329);
 }
 
 .top-nav>.open>.dropdown-menu>li>a {
@@ -140,4 +140,8 @@
 
 .navbar-brand {
     padding: 5px 15px;
+}
+
+.fas{
+    font-size: 20px;
 }

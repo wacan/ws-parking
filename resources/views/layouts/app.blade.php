@@ -49,7 +49,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="far fa-user-circle" style="font-size: 20px;"></i> {{ Auth::user()->username }} <b class="fa fa-angle-down"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a><i class="fas fa-fw fa-user-check"></i>{{Auth::User()->name}} {{Auth::User()->lastname}}</a>
+                        <a><i class="fas fa-fw fa-user-check" style="font-size: 12px;"></i>{{Auth::User()->name}} {{Auth::User()->lastname}}</a>
                     </li>
                     <li><a href="#"><i class="fa fa-fw fa-cog"></i>Editar perfil</a></li>
                     <li class="divider"></li>
@@ -57,10 +57,7 @@
                                            document.getElementById('logout-form').submit();">
                         <i class="fa fa-fw fa-power-off"></i>Salir</a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                </form>  
-
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"> @csrf</form>  
                     </li>
                 </ul>
             </li>
@@ -69,11 +66,12 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="/"><i class="fa fa-fw fa-home"></i> DASHBOARD</a>
+                    <a href="/"><i class="fas fa-home"></i> PANEL DE CONTROL</a>
                 </li>
+                @can('Administrador')
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu">
-                        <i class="fa fa-fw fa-user-plus"></i>  Usuarios 
+                        <i class="fas fa-user-plus"></i>  Usuarios 
                         <i class="fa fa-fw fa-angle-down pull-right"></i>
                     </a>
                     <ul id="submenu" class="collapse">
@@ -86,9 +84,11 @@
                             <i class="fa fa-angle-double-right"></i> Administrar rol</a>
                         </li>
                     </ul>
+                </li>
+                @endcan
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-1">
-                        <i class="fa fa-fw fa-star"></i>  Registrar Vehículos 
+                        <i class="fas fa-star"></i>  Registrar Vehículos 
                         <i class="fa fa-fw fa-angle-down pull-right"></i>
                     </a>
                     <ul id="submenu-1" class="collapse">
@@ -113,7 +113,7 @@
                         <i class="fa fa-fw fa-angle-down pull-right"></i>
                     </a>
                     <ul id="submenu-2" class="collapse">
-                        <li><a href="/ParkingAutos"
+                        <li><a href="/parkingAutos"
                             class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> Asiganar puesto </a>
                         </li>
@@ -130,7 +130,7 @@
                         <i class="fa fa-fw fa-angle-down pull-right"></i>
                     </a>
                     <ul id="submenu-3" class="collapse">
-                        <li><a href="/ParkingMotos"
+                        <li><a href="/parkingMotos"
                             class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> Asiganar puesto </a>
                         </li>
@@ -147,7 +147,7 @@
                         <i class="fa fa-fw fa-angle-down pull-right"></i>
                     </a>
                     <ul id="submenu-4" class="collapse">
-                        <li><a href="/ParkinBici"
+                        <li><a href="/parkinBici"
                             class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> Asiganar puesto </a>
                         </li>
@@ -157,13 +157,30 @@
                         </li>
                     </ul>
                 </li>
-
+                @can('Administrador')
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-5">
-                        <i class="fas fa-folder-open"></i> Reportes
+                        <i class="fas fa-cogs"></i> Configuración 
                         <i class="fa fa-fw fa-angle-down pull-right"></i>
                     </a>
                     <ul id="submenu-5" class="collapse">
+                        <li><a href="/parking"
+                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
+                            <i class="fa fa-angle-double-right"></i> Administrar parqueadero  </a>
+                        </li>
+                        <li><a href="/tarifas"
+                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
+                            <i class="fa fa-angle-double-right"></i>Administrar tarifas </a>
+                        </li>
+                    </ul>
+                </li>
+                @endcan
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-6">
+                        <i class="fas fa-folder-open"></i> Reportes
+                        <i class="fa fa-fw fa-angle-down pull-right"></i>
+                    </a>
+                    <ul id="submenu-6" class="collapse">
                         <li><a href="/Parking"
                             class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> parking </a>

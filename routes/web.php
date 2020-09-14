@@ -16,3 +16,24 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+//ruta para los usuarios
+Route::resource('/usuarios', 'UserController');
+
+//ruta para los roles
+Route::resource('/group', 'RoleController');
+
+//ruta para los autos
+Route::resource('/automoviles', 'AutomovilController');
+
+//ruta para los motos
+Route::resource('/motos', 'MotosController');
+
+//ruta para las ciclas
+Route::resource('/bicicletas', 'BicicletasController');
+
+//ruta para el parqueadero
+Route::resource('/parkingAutos', 'ParkingAutosController');
+
+//ruta para parking
+Route::resource('/parking', 'ParkingController');

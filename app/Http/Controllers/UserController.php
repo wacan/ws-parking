@@ -18,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('layouts.app', ['users'=>$users]);
+        return view('usuarios.index', ['users'=>$users]);
     }
 
     /**
@@ -28,7 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('usuarios.create', ['roles'=>$roles]);
     }
 
     /**
@@ -39,7 +40,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new User();
+
+        //campos del name de los imputs que se capturan dentro de la variable usuario
+        $usuario->name = request('name');
+        $usuario->lastname = request('lastname');
+        $usuario->username = request('userName');
+        $usuario->user_estado = request('estado');
+        $usuario->password = bcrypt(request('password'));
+    
+        $usuario->save();
+        $usuario->asignarRol($request->get('rol'));
+        return redirect('/usuarios')->with('flash', 'Elemento guardado con exito');
     }
 
     /**
@@ -61,7 +73,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrfail($id);
+        $roles = Role::all();
+        return view('usuarios.edit', ['user' => $user, 'roles' => $roles]);
     }
 
     /**
@@ -73,7 +87,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $usuario =  User::findOrFail($id);
+
+        $usuario->name = $request->get('name');
+        $usuario->lastname = $request->get('lastname');
+        $usuario->username = $request->get('userName');
+        $usuario->user_estado = $request->get('estado');
+
+        $role = $usuario->roles;
+        if(count($role) > 0)
+        {
+            $role_id = $role[0]->id;
+        }
+        User::find($id)->roles()->updateExistingPivot($role_id, ['role_id' => $request->get('rol')]);
+
+        $usuario->update(); //linea que actualiza los datos capturados
+
+        return redirect('/usuarios')->with('flash', 'Elemento actualizado con exito');
     }
 
     /**
@@ -84,6 +115,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::findOrFail($id);
+
+        $usuario->delete();
+
+        return redirect('/usuarios')->with('flash', 'Elemento eliminado con exito');
     }
 }
