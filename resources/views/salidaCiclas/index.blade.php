@@ -7,7 +7,7 @@
         <div class="panel-heading clearfix">
             <strong>
               <span class="glyphicon glyphicon-th"></span>
-              <span>Parking Autos</span>
+              <span>Salida Ciclas</span>
             </strong>
         </div>
 
@@ -31,27 +31,27 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">NOMBRE PROPIETARIO</th>
-            <th scope="col">APELLIDOS PROPIETARIO</th>
-            <th scope="col">DOCUMENTO</th>
             <th scope="col">MODELO</th>
-            <th scope="col">PLACAS</th>
-            <th scope="col">PARKING ASIGANDO</th>
+            <th scope="col">No DE MARCO</th>
+            <th scope="col">FECHA ENTRADA</th>
+            <th scope="col">HORA ENTRADA</th>
+            <th scope="col">FECHA SALIDA</th>
+            <th scope="col">HORA SALIDA</th>
             <th scope="col">ACCIONES</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($parkingAutos as $parkingAuto)
+        @foreach($salidaCiclas as $salidaCicla)
             <tr>
-                <td>{{$parkingAuto->nombre_prop}}</td>
-                <td>{{$parkingAuto->apellidos_prop}}</td>
-                <td>{{$parkingAuto->documento}}</td>
-                <td>{{$parkingAuto->modelo}}</td>
-                <td>{{$parkingAuto->placas}}</td>             
-                <td>{{$parkingAuto->parking_asigned}}</td>
+                <td>{{$salidaCicla->marca}}</td>
+                <td>{{$salidaCicla->num_marco}}</td>             
+                <td>{{$salidaCicla->fecha_ingreso}}</td>
+                <td>{{$salidaCicla->hora_ingreso}}</td>
+                <td>{{$salidaCicla->fecha_salida}}</td>
+                <td>{{$salidaCicla->hora_salida}}</td>
                 <td>
-                    @include('parkingAutos.edit')
-                    <form method="POST" action="{{route('parkingAutos.destroy', $parkingAuto->id)}}">
+                    @include('salidaCiclas.edit')
+                    <form method="POST" action="{{route('salidaCiclas.destroy', $salidaCicla->id)}}">
                     @csrf
                     @method('DELETE')
                     @can('Administrador')

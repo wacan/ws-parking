@@ -21,6 +21,18 @@
             <label for="recipient-name" class="col-form-label">Nombre estacionamiento:</label>
             <input type="text" name="name" class="form-control" id="recipient-name" value="{{$parking->name}}">
           </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Reservar estacionamiento:</label>
+            <select type="text" name="estado" class="form-control" id="recipient-name">
+            @if($parking['estado']===1)           
+              <option selected  value="1">Asignado</option>          
+              <option value="0">Libre</option>
+            @else    
+                <option selected  value="0">Libre</option>
+                <option value="1">Asignado</option>
+            @endif
+            </select>
+          </div>
         </form>
       </div>
       <div class="modal-footer">

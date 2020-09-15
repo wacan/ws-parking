@@ -1,12 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Automovil;
-use App\Parking;
+use App\Bicicleta;
 use Illuminate\Http\Request;
 
-class ParkingAutosController extends Controller
+class salidaCiclasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +17,10 @@ class ParkingAutosController extends Controller
         {
             $query = trim($request->get('search'));
             
-            $parkingAutos = Automovil::where('placas', 'LIKE', '%' .$query. '%')
+            $salidaCiclas = Bicicleta::where('num_marco', 'LIKE', '%' .$query. '%')
             ->orderBy('id', 'asc')
             ->get();
-            return view('parkingAutos.index', ['parkingAutos'=>$parkingAutos, 'search'=>$query]);
+            return view('salidaCiclas.index', ['salidaCiclas'=>$salidaCiclas, 'search'=>$query]);
         }
     }
 
@@ -35,14 +33,14 @@ class ParkingAutosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $parkingAuto = Automovil::findOrfail($id);
+        $salidaCicla = Bicicleta::findOrfail($id);
 
         //Campos
-        $parkingAuto->parking_asigned = $request->get('parking_asigned');
+        $salidaCicla->fecha_salida = $request->get('fecha_salida');
+        $salidaCicla->hora_salida = $request->get('hora_salida');
 
-        $parkingAuto->update();
-        return redirect('/parkingAutos')->with('flash', 'Elemento actualizado con exito');
-        
+        $salidaCicla->update();
+        return redirect('/salidaCiclas')->with('flash', 'Elemento actualizado con exito');
     }
 
     /**
@@ -53,9 +51,9 @@ class ParkingAutosController extends Controller
      */
     public function destroy($id)
     {
-        $parkingAuto = Automovil::findOrfail($id);
+        $salidaCicla = Bicicleta::findOrfail($id);
 
-        $parkingAuto->delete();
-        return redirect('/parkingAutos')->with('flash', 'Elemento eliminado con exito');
+        $salidaCicla->delete();
+        return redirect('/salidaCiclas')->with('flash', 'Elemento eliminado con exito');
     }
 }

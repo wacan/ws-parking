@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Parking;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $parkings = Parking::all();
+        return view('home', ['parkings', $parkings]);
     }
 }

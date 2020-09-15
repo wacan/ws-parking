@@ -7,7 +7,7 @@
         <div class="panel-heading clearfix">
             <strong>
               <span class="glyphicon glyphicon-th"></span>
-              <span>Parking Autos</span>
+              <span>Parking Motos</span>
             </strong>
         </div>
 
@@ -41,17 +41,17 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($parkingAutos as $parkingAuto)
+        @foreach($parkingMotos as $parkingMoto)
             <tr>
-                <td>{{$parkingAuto->nombre_prop}}</td>
-                <td>{{$parkingAuto->apellidos_prop}}</td>
-                <td>{{$parkingAuto->documento}}</td>
-                <td>{{$parkingAuto->modelo}}</td>
-                <td>{{$parkingAuto->placas}}</td>             
-                <td>{{$parkingAuto->parking_asigned}}</td>
+                <td>{{$parkingMoto->nombre_prop}}</td>
+                <td>{{$parkingMoto->apellidos_prop}}</td>
+                <td>{{$parkingMoto->documento}}</td>
+                <td>{{$parkingMoto->modelo}}</td>
+                <td>{{$parkingMoto->placas}}</td>             
+                <td>{{$parkingMoto->parking_asigned}}</td>
                 <td>
-                    @include('parkingAutos.edit')
-                    <form method="POST" action="{{route('parkingAutos.destroy', $parkingAuto->id)}}">
+                    @include('parkingMotos.edit')
+                    <form method="POST" action="{{route('parkingMotos.destroy', $parkingMoto->id)}}">
                     @csrf
                     @method('DELETE')
                     @can('Administrador')

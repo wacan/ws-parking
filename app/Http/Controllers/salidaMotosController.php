@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Automovil;
-use App\Parking;
+use App\Moto;
 use Illuminate\Http\Request;
 
-class ParkingAutosController extends Controller
+class salidaMotosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +18,12 @@ class ParkingAutosController extends Controller
         {
             $query = trim($request->get('search'));
             
-            $parkingAutos = Automovil::where('placas', 'LIKE', '%' .$query. '%')
+            $salidaMotos = Moto::where('placas', 'LIKE', '%' .$query. '%')
             ->orderBy('id', 'asc')
             ->get();
-            return view('parkingAutos.index', ['parkingAutos'=>$parkingAutos, 'search'=>$query]);
+            return view('salidaMotos.index', ['salidaMotos'=>$salidaMotos, 'search'=>$query]);
         }
+        
     }
 
     /**
@@ -35,14 +35,14 @@ class ParkingAutosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $parkingAuto = Automovil::findOrfail($id);
+        $salidaMoto = Moto::findOrfail($id);
 
         //Campos
-        $parkingAuto->parking_asigned = $request->get('parking_asigned');
+        $salidaMoto->fecha_salida = $request->get('fecha_salida');
+        $salidaMoto->hora_salida = $request->get('hora_salida');
 
-        $parkingAuto->update();
-        return redirect('/parkingAutos')->with('flash', 'Elemento actualizado con exito');
-        
+        $salidaMoto->update();
+        return redirect('/salidaMotos')->with('flash', 'Elemento actualizado con exito');
     }
 
     /**
@@ -53,9 +53,9 @@ class ParkingAutosController extends Controller
      */
     public function destroy($id)
     {
-        $parkingAuto = Automovil::findOrfail($id);
+        $salidaMoto = Moto::findOrfail($id);
 
-        $parkingAuto->delete();
-        return redirect('/parkingAutos')->with('flash', 'Elemento eliminado con exito');
+        $salidaMoto->delete();
+        return redirect('/salidaAutos')->with('flash', 'Elemento eliminado con exito');
     }
 }

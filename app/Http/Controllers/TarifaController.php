@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\tarifa;
+use App\Tarifa;
 use Illuminate\Http\Request;
 
 class TarifaController extends Controller
@@ -12,19 +12,17 @@ class TarifaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
+        if($request)
+        {
+            $query = trim($request->get('search'));
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+            $tarifas = Tarifa::where('tipo_vehiculo', 'LIKE', '%' .$query. '%')
+            ->orderBy('id', 'asc')
+            ->paginate(5);
+            return view('tarifas.index', ['tarifas'=>$tarifas, 'search'=>$query] );
+        }
     }
 
     /**
@@ -35,29 +33,13 @@ class TarifaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $tarifa = new Tarifa();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\tarifa  $tarifa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(tarifa $tarifa)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\tarifa  $tarifa
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(tarifa $tarifa)
-    {
-        //
+        //campos
+        $tarifa->tipo_vehiculo = request('tipo_vehiculo');
+        $tarifa->tarifa_fija = request('tarifa_fija');
+        $tarifa->save();
+        return redirect('/tarifas')->with('flash', 'Elemento guardado con exito');
     }
 
     /**
@@ -67,9 +49,16 @@ class TarifaController extends Controller
      * @param  \App\tarifa  $tarifa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tarifa $tarifa)
+    public function update(Request $request, $id)
     {
-        //
+        $tarifa = Tarifa::findOrFail($id);
+
+        //campos
+        $tarifa->tipo_vehiculo = $request->get('tipo_vehiculo');
+        $tarifa->tarifa_fija = $request->get('tarifa_fija');
+
+        $tarifa->update();
+        return redirect('/tarifas')->with('flash', 'Elemento actualizado con exito');
     }
 
     /**
@@ -78,8 +67,10 @@ class TarifaController extends Controller
      * @param  \App\tarifa  $tarifa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tarifa $tarifa)
+    public function destroy($id)
     {
-        //
+        $tarifa = Tarifa::findOrfail($id);
+        $tarifa->delete();
+        return redirect('/tarifas')->with('flash', 'Elemento eliminado con exito');
     }
 }

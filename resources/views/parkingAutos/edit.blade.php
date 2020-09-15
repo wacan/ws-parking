@@ -28,17 +28,17 @@
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Asignar puesto:</label>
             <select type="text" name="parking_asigned" class="form-control" id="recipient-name">
-                <option value="">Seleccione un puesto</option>
-                <option value="">AN-1</option>
-                <option value="">AN-2</option>
-                <option value="">AN-3</option>
-                <option value="">AN-4</option>
-                <option value="">AN-5</option>
-                <option value="">AS-1</option>
-                <option value="">AS-2</option>
-                <option value="">AS-3</option>
-                <option value="">AS-4</option>
-                <option value="">AS-5</option>
+                <option selected disable>Seleccione un puesto</option>
+                <option value="AO-1">AO-1</option>
+                <option value="AO-2">AO-2</option>
+                <option value="AO-3">AO-3</option>
+                <option value="AO-4">AO-4</option>
+                <option value="AO-5">AO-5</option>
+                <option value="AS-1">AS-1</option>
+                <option value="AS-2">AS-2</option>
+                <option value="AS-3">AS-3</option>
+                <option value="AS-4">AS-4</option>
+                <option value="AS-5">AS-5</option>
             </select>
           </div>
         </form>

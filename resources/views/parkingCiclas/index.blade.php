@@ -7,7 +7,7 @@
         <div class="panel-heading clearfix">
             <strong>
               <span class="glyphicon glyphicon-th"></span>
-              <span>Parking Autos</span>
+              <span>Parking Ciclas</span>
             </strong>
         </div>
 
@@ -34,24 +34,24 @@
             <th scope="col">NOMBRE PROPIETARIO</th>
             <th scope="col">APELLIDOS PROPIETARIO</th>
             <th scope="col">DOCUMENTO</th>
-            <th scope="col">MODELO</th>
-            <th scope="col">PLACAS</th>
+            <th scope="col">MARCA</th>
+            <th scope="col">No DE MARCO</th>
             <th scope="col">PARKING ASIGANDO</th>
             <th scope="col">ACCIONES</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($parkingAutos as $parkingAuto)
+        @foreach($parkingCiclas as $parkingCicla)
             <tr>
-                <td>{{$parkingAuto->nombre_prop}}</td>
-                <td>{{$parkingAuto->apellidos_prop}}</td>
-                <td>{{$parkingAuto->documento}}</td>
-                <td>{{$parkingAuto->modelo}}</td>
-                <td>{{$parkingAuto->placas}}</td>             
-                <td>{{$parkingAuto->parking_asigned}}</td>
+                <td>{{$parkingCicla->nombre_prop}}</td>
+                <td>{{$parkingCicla->apellidos_prop}}</td>
+                <td>{{$parkingCicla->documento}}</td>
+                <td>{{$parkingCicla->marca}}</td>
+                <td>{{$parkingCicla->num_marco}}</td>             
+                <td>{{$parkingCicla->parking_asigned}}</td>
                 <td>
-                    @include('parkingAutos.edit')
-                    <form method="POST" action="{{route('parkingAutos.destroy', $parkingAuto->id)}}">
+                    @include('parkingCiclas.edit')
+                    <form method="POST" action="{{route('parkingCiclas.destroy', $parkingCicla->id)}}">
                     @csrf
                     @method('DELETE')
                     @can('Administrador')

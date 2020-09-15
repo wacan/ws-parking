@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Automovil;
-use App\Parking;
+use App\Bicicleta;
 use Illuminate\Http\Request;
 
-class ParkingAutosController extends Controller
+class parkingCiclasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +18,10 @@ class ParkingAutosController extends Controller
         {
             $query = trim($request->get('search'));
             
-            $parkingAutos = Automovil::where('placas', 'LIKE', '%' .$query. '%')
+            $parkingCiclas = Bicicleta::where('num_marco', 'LIKE', '%' .$query. '%')
             ->orderBy('id', 'asc')
             ->get();
-            return view('parkingAutos.index', ['parkingAutos'=>$parkingAutos, 'search'=>$query]);
+            return view('parkingCiclas.index', ['parkingCiclas'=>$parkingCiclas, 'search'=>$query]);
         }
     }
 
@@ -35,14 +34,13 @@ class ParkingAutosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $parkingAuto = Automovil::findOrfail($id);
+        $parkingCicla = Bicicleta::findOrfail($id);
 
         //Campos
-        $parkingAuto->parking_asigned = $request->get('parking_asigned');
+        $parkingCicla->parking_asigned = $request->get('parking_asigned');
 
-        $parkingAuto->update();
-        return redirect('/parkingAutos')->with('flash', 'Elemento actualizado con exito');
-        
+        $parkingCicla->update();
+        return redirect('/parkingCiclas')->with('flash', 'Elemento actualizado con exito');
     }
 
     /**
@@ -53,9 +51,9 @@ class ParkingAutosController extends Controller
      */
     public function destroy($id)
     {
-        $parkingAuto = Automovil::findOrfail($id);
+        $parkingCicla = Bicicleta::findOrfail($id);
 
-        $parkingAuto->delete();
-        return redirect('/parkingAutos')->with('flash', 'Elemento eliminado con exito');
+        $parkingCicla->delete();
+        return redirect('/parkingCiclas')->with('flash', 'Elemento eliminado con exito');
     }
 }

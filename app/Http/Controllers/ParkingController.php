@@ -53,6 +53,7 @@ class ParkingController extends Controller
 
         //campos
         $parking->name = $request->get('name');
+        $parking->estado = $request->get('estado');
 
         $parking->update();
         return redirect('/parking')->with('flash', 'Elemento actualizado con exito');

@@ -93,15 +93,15 @@
                     </a>
                     <ul id="submenu-1" class="collapse">
                         <li><a href="/automoviles"
-                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
+                            class="{{ Request::path() === '/automoviles' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> Automoviles </a>
                         </li>
                         <li><a href="/motos"
-                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
+                            class="{{ Request::path() === '/motos' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> Motos </a>
                         </li>
                         <li><a href="/bicicletas"
-                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
+                            class="{{ Request::path() === '/bicicletas' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> Bicicletas </a>
                         </li>
                     </ul>
@@ -114,12 +114,12 @@
                     </a>
                     <ul id="submenu-2" class="collapse">
                         <li><a href="/parkingAutos"
-                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
-                            <i class="fa fa-angle-double-right"></i> Asiganar puesto </a>
+                            class="{{ Request::path() === '/parkingAutos' ? 'nav-link active' : 'nav-link' }}">
+                            <i class="fa fa-angle-double-right"></i> Asignar puesto </a>
                         </li>
-                        <li><a href="/tarifaAuto"
-                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
-                            <i class="fa fa-angle-double-right"></i> tarifa </a>
+                        <li><a href="/salidaAutos"
+                            class="{{ Request::path() === '/salidaAutos' ? 'nav-link active' : 'nav-link' }}">
+                            <i class="fa fa-angle-double-right"></i> Registrar salidas </a>
                         </li>
                     </ul>
                 </li>
@@ -131,12 +131,12 @@
                     </a>
                     <ul id="submenu-3" class="collapse">
                         <li><a href="/parkingMotos"
-                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
-                            <i class="fa fa-angle-double-right"></i> Asiganar puesto </a>
+                            class="{{ Request::path() === '/parkingMotos' ? 'nav-link active' : 'nav-link' }}">
+                            <i class="fa fa-angle-double-right"></i> Asignar puesto </a>
                         </li>
-                        <li><a href="/tarifaMoto"
-                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
-                            <i class="fa fa-angle-double-right"></i> tarifa </a>
+                        <li><a href="/salidaMotos"
+                            class="{{ Request::path() === '/salidaMoto' ? 'nav-link active' : 'nav-link' }}">
+                            <i class="fa fa-angle-double-right"></i> Registrar salidas </a>
                         </li>
                     </ul>
                 </li>
@@ -147,13 +147,13 @@
                         <i class="fa fa-fw fa-angle-down pull-right"></i>
                     </a>
                     <ul id="submenu-4" class="collapse">
-                        <li><a href="/parkinBici"
-                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
+                        <li><a href="/parkingCiclas"
+                            class="{{ Request::path() === '/parkingCiclas' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> Asiganar puesto </a>
                         </li>
-                        <li><a href="/tarifaBici"
-                            class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
-                            <i class="fa fa-angle-double-right"></i> tarifa </a>
+                        <li><a href="/salidaCiclas"
+                            class="{{ Request::path() === '/salidaCiclas' ? 'nav-link active' : 'nav-link' }}">
+                            <i class="fa fa-angle-double-right"></i> Registrar salidas </a>
                         </li>
                     </ul>
                 </li>
