@@ -1,0 +1,9 @@
+//////////***************** ESTAS SON LAS CREDENCIALES PARA LOGEUARSE COMO ADMINISTRADOR AL SISTEMA */////////////////////
+
+USER: Admin
+PASS: D3s4rr0ll0
+
+//////////***************** ESTAS SON LAS CREDENCIALES PARA LOGEUARSE COMO USUARIO NORMAL AL SISTEMA */////////////////////
+
+USER: Usuario
+PASS: User1234

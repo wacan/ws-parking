@@ -56,9 +56,11 @@
            <form method="POST" action="{{route('parking.destroy', $parking->id)}}">                
                 @csrf
                 @method('DELETE')
+                @can('Administrador')
                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estas seguro de eliminar este registro?')">
                   <i class="far fa-trash-alt"></i>
                 </button>
+                @endcan
             </form>
            </td>
           </tr>

@@ -157,7 +157,7 @@
                         </li>
                     </ul>
                 </li>
-                @can('Administrador')
+                
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-5">
                         <i class="fas fa-cogs"></i> Configuración 
@@ -168,32 +168,34 @@
                             class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> Administrar parqueadero  </a>
                         </li>
+                        @can('Administrador')
                         <li><a href="/tarifas"
                             class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i>Administrar tarifas </a>
                         </li>
+                        @endcan
                     </ul>
                 </li>
-                @endcan
+                
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-6">
                         <i class="fas fa-folder-open"></i> Reportes
                         <i class="fa fa-fw fa-angle-down pull-right"></i>
                     </a>
                     <ul id="submenu-6" class="collapse">
-                        <li><a href="/Parking"
+                        <li><a href="#"
                             class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> parking </a>
                         </li>
-                        <li><a href="/in-out"
+                        <li><a href="#"
                             class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> entradas y salidas </a>
                         </li>
-                        <li><a href="/Vehiculos"
+                        <li><a href="#"
                             class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> vehiculos </a>
                         </li>
-                        <li><a href="/tarifas"
+                        <li><a href="#"
                             class="{{ Request::path() === '/product' ? 'nav-link active' : 'nav-link' }}">
                             <i class="fa fa-angle-double-right"></i> tarifas </a>
                         </li>
